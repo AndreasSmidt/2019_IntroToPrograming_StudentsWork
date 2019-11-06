@@ -1,0 +1,46 @@
+int r=60;
+float ballX;
+float ballY;
+float x=100;
+float y=100;
+int speedX = 1;
+int speedY = 3;
+
+void setup() {
+  size(400,600);
+  // background(#43AF76);
+}
+
+void draw() {
+  background(#43AF76);
+  // frameRate(5);
+
+  y += speedY;
+  x += speedX;
+
+
+  if (x+90>width || x-90<0) {
+    speedX*=-1;
+  }
+  if (y+90>height || y-90<0) {
+    speedY*=-1;
+  }
+
+  flower(x, y);
+  
+  println("y: " + y);
+  println("x: " + x);
+}
+
+
+
+void flower (float x, float y ) {
+  fill(#FFA005);
+  for (float i=0; i<PI*2; i+=2*PI/5) {
+    float ballX=r*cos(i);
+    float ballY=r*sin(i);
+    ellipse(x+ballX, y+ballY, r, r);
+  }
+  fill(200, 0, 0);
+  ellipse(x, y, r*1.2, r*1.2);
+}
